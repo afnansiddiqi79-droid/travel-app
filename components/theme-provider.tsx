@@ -1,7 +1,11 @@
+
 "use client"
 
 import * as React from "react"
-import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+import {
+  ThemeProvider as NextThemesProvider,
+  useTheme,
+} from "next-themes"
 
 function ThemeProvider({
   children,
@@ -47,7 +51,11 @@ function ThemeHotkey() {
         return
       }
 
-      if (event.key.toLowerCase() !== "d") {
+      // Safely check the key before calling toLowerCase()
+      if (
+        typeof event.key !== "string" ||
+        event.key.toLowerCase() !== "d"
+      ) {
         return
       }
 
